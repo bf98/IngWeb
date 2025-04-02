@@ -25,5 +25,5 @@
 
 <template>
 	<p style="text-align: center;">Account Page</p>
-	<p style="text-align: center;" v-if="datiUser[0]">Hello, {{ datiUser[0].name }}</p>
+	<p style="text-align: center;" v-if="datiUser[0]">Your username is {{ datiUser[0].name }}</p>
 </template>

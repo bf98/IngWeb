@@ -15,7 +15,7 @@
 }
 
 .container-fluid {
-    position: relative;
+    position: flex;
   }
 
 .ClickArea {
@@ -57,12 +57,12 @@ table {
 }
 
 .big-table {
-    width: 80px;
-    max-width: 800px;
-    height: 300px;
-    font-size: 1.9rem;
-    padding: 15px;
-    border-collapse: collapse;
+        width: 80px;
+        max-width: 800px;
+        height: 300px;
+        font-size: 1.9rem;
+        padding: 15px;
+        border-collapse: collapse;
 }
 
 .small-table {
@@ -156,4 +156,82 @@ tbody > tr:nth-of-type(even) {
     align-items: center;
     height: auto;
     width: 100%;
+}
+
+.access-container {
+    display: flex;
+    justify-content: space-between; 
+    max-width: 900px; 
+    padding:auto;
+    margin: 0 auto; 
+}
+.container-register,
+.container-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 83vh;
+    width: 100%;
+    max-height:100vh;
+    overflow-y: auto; 
+}
+
+.container-register h2,
+.container-login h2 
+{
+
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+.container-register form,
+.container-login form {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;              
+    width: 100%;
+    max-width: 400px;       
+  }
+
+.container-register li, 
+.container-login li {
+    display: flex;
+    flex-direction: column;
+  }
+
+.container-register .RegisterButton,
+.container-login .LoginButton
+{
+    font-size:20px;
+    margin-top:2vh;
+}
+
+.account-page a{
+    color:#0000EE
+}
+
+.account-page {
+    text-align:left;
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    height: 83vh;
+    width: 100%;
+    max-height:100vh;
+    padding: 20vw;
+}
+
+.account-header h1 
+{
+    font-size:50px;
+}
+.account-info p {
+    text-align:left;
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    font-size:25px;
+    padding:20px;
+    line-height:5vh;
 }

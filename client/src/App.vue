@@ -19,6 +19,9 @@
               <li class="nav-item">
 			  	<router-link to="/account" class="nav-link">Account</router-link>
 			  </li>
+              <li class="nav-item">
+			  	<router-link to="/login" class="nav-link">Log-in</router-link>
+			  </li>
             </ul>
           </div>
         </div>

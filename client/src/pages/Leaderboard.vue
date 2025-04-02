@@ -60,6 +60,7 @@
 					<tr v-for="user in usersOthers">
 						<th scope="row">n</th>
 						<th scope="row">{{ user.name }}</th>
+						<th scope="row">{{ user.click_num }}</th>
 					</tr>
 				</tbody>
 				</table>

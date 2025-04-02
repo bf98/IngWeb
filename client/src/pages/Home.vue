@@ -48,10 +48,6 @@
 			<div class="col-md-4 ClickArea">
 				<button v-on:click="counter += 1">Click</button>
 				<p>{{ counter }} clicks!</p>
-				<div v-for="user in datiUsers">
-				  <p class="text-center">Click Number: {{user.click_num}}</p>
-				  <p class="text-center">Hello {{user.name}}</p> 
-				</div>
 			</div>
 		</div>
 	</div>
