@@ -13,8 +13,8 @@
 			async onSubmit_Login() {
 				try {
 					await axios.post("/api/auth/login", {
-						username: this.username,
-						password: this.password,
+						username: this.usernameLogin,
+						password: this.passwordLogin,
 					})
 					location.href = "/"
 				} catch (e: any) {
@@ -29,8 +29,8 @@
 			async onSubmit_Register() {
 				try {
 					await axios.post("/api/auth/register", {
-						username: this.username,
-						password: this.password,
+						username: this.usernameRegister,
+						password: this.passwordRegister,
 					})
 					location.href = "/"
 				} catch (e: any) {
@@ -54,11 +54,11 @@
 		<form @submit.prevent="onSubmit_Login">
 		  <li>
 			<label for="username">Username</label>
-			<input type="text" v-model="username" name="username" />
+			<input type="text" v-model="usernameLogin" name="usernameLogin" />
 		  </li>
 		  <li>
 			<label for="password">Password</label>
-			<input type="text" v-model="password" name="password" />
+			<input type="password" v-model="passwordLogin" name="passwordLogin" />
 		  </li>
 		  <li class="LoginButton">
 			<input type="submit" name="submit" value="Confirm" />
@@ -71,12 +71,12 @@
 		<div class="container-user"></div>
 		<form @submit.prevent="onSubmit_Register">
 		  <li>
-			<label for="username">Username</label>
-			<input type="text" v-model="username" name="username" />
+			<label for="usernameRegister">Username</label>
+			<input type="text" v-model="usernameRegister" name="usernameRegister" />
 		  </li>
 		  <li>
 			<label for="password">Password</label>
-			<input type="password" v-model="password" name="password" />
+			<input type="password" v-model="passwordRegister" name="passwordRegister" />
 		  </li>
 		  <li class="RegisterButton">
 			<input type="submit" name="submit" value="Register" />

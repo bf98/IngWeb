@@ -1,3 +1,32 @@
+<script lang="ts">
+	
+	import { defineComponent } from "vue"
+	import axios from "axios"
+	import { User } from "../types"
+
+	export default defineComponent({
+		data() {
+			return {
+				datiUser: [] as User[],
+				counter:0	
+			}
+		},
+		methods: {
+			getUser() {
+				axios.get("/api/auth/profile/").then(response => this.datiUser[0] = response.data)
+			},
+			logout() {
+				axios.post("/api/auth/logout/");
+				this.$router.push("/");
+			}
+		},
+		mounted() {
+			this.getUser()
+		}
+	})
+
+</script>
+
 <template>
 	<nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -22,6 +51,9 @@
               <li class="nav-item">
 			  	<router-link to="/login" class="nav-link">Log-in</router-link>
 			  </li>
+			  <button v-if="datiUser[0]" class="nav-item button is-primary" @click="logout">
+			  	Log-out
+			  </button>
             </ul>
           </div>
         </div>
