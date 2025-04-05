@@ -235,3 +235,23 @@ tbody > tr:nth-of-type(even) {
     padding:20px;
     line-height:5vh;
 }
+
+.logout-button 
+{
+    position:absolute;
+    text-align:right;
+    justify-content:center;
+    flex-direction: column;
+    padding-left:50%;
+    top: 50%;
+}
+
+.logout-button button 
+{
+    height:15%;
+    max-height:15%;
+    padding:10px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background-color: lightcoral;
+}
