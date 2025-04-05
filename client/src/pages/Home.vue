@@ -35,7 +35,7 @@
 				<div class="Upgrades d-flex justify-content-center flex-wrap">
 				<div class="card align-items-center text-center" style="width: 18rem;">
 					<div class="card-body">
-						<h5 class="card-title">Card title {{ rowIndex * 3 + index + 1 }}</h5>
+						<h5 class="card-title">Gun {{ rowIndex * 3 + index + 1 }}</h5>
 						<p class="card-text">Some text</p>
 						<a href="#" class="btn btn-primary">Buy</a>
 					</div>
