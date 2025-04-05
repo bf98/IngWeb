@@ -14,6 +14,11 @@
 		methods: {
 			getUser() {
 				axios.get("/api/auth/profile/").then(response => this.datiUser[0] = response.data)
+			},
+			logout() {
+				axios.post("/api/auth/logout/");
+				// torna alla home
+				this.$router.push("/");
 			}
 		},
 		mounted() {
@@ -32,6 +37,7 @@
 					<p><strong>Username<br />{{datiUser[0].name}}</strong></p>
 					<p><strong>Total Clicks<br />{{datiUser[0].click_num}}</strong></p>
 					<p><strong>Achievements<br />{{datiUser[0].achievements}}</strong></p>
+					<button v-if="datiUser[0]" class="nav-item button is-primary" @click="logout">Log-out</button>
 				</div>
 				<div class="flist-info">
 					<h1>Friend List <!--{{friend.list}}--></h1>
