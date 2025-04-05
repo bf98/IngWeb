@@ -29,9 +29,9 @@
 			<div v-if="datiUser[0]">
 				<div class="account-info">
 					<h2>Account</h2>
-					<p><strong>Username<br />Test {{user.name}}</strong></p>
-					<p><strong>Total Clicks<br />Test  {{user.click_num}}</strong></p>
-					<p><strong>Achievements<br />Test  {{user.achievements}}</strong></p>
+					<p><strong>Username<br />{{datiUser[0].name}}</strong></p>
+					<p><strong>Total Clicks<br />{{datiUser[0].click_num}}</strong></p>
+					<p><strong>Achievements<br />{{datiUser[0].achievements}}</strong></p>
 				</div>
 				<div class="flist-info">
 					<h1>Friend List <!--{{friend.list}}--></h1>
