@@ -5,6 +5,7 @@ export interface User {
 	id: number,
 	username: string, 
 	password: string,
+	click_num: number,
 }
 
 const JWT_SECRET = "foo"

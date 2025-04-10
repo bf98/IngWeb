@@ -8,13 +8,22 @@
 		data() {
 			return {
 				datiUsers: [] as User[],
-				counter:0	
+				clickCounter: 0,	
 			}
 		},
 		methods: {
 			getUsers() {
 				axios.get("/api/users/").then(response => this.datiUsers = response.data)
-			}
+			},
+			incrementClicks() {
+				this.clickCounter++;
+			},
+			updateClicks() {
+				
+			},
+			startUpdatingClicks() {
+				
+			},
 		},
 		mounted() {
 			this.getUsers()
@@ -46,8 +55,8 @@
 
 			</div>
 			<div class="col-md-4 ClickArea">
-				<button v-on:click="counter += 1">Click</button>
-				<p>{{ counter }} clicks!</p>
+				<button v-on:click="incrementClicks()">Click</button>
+				<p>{{ clickCounter }} clicks!</p>
 			</div>
 		</div>
 	</div>
