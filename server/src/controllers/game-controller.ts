@@ -1,21 +1,37 @@
 import { Request, Response } from "express"
 import { connection } from "../utils/db"
+import { getUser, User } from "../utils/auth"
 
-export async function getUser_ClickNum (_req: Request, res: Response) {
+//export async function getUser_ClickNum (_req: Request, res: Response) {
+//export const login = async (req: Request, res: Response) => {
+export const getUser_ClickNum = async (_req: Request, res: Response) => {
 
+	const user = getUser(_req, res);
 	// TODO
-	const [clickNum] = await connection.execute("SELECT * from users ");
-	res.json(clickNum);
+	if (user) {
+	  const [clickNum] = await connection.execute("SELECT click_num from users where id=?", [user.id]);
+	  res.json(clickNum);
+	}
+	else {
+	  res.json({ message: "You need to be logged" });
+	}
 }
 
-export async function setUser_ClickNum (_req: Request, res: Response) {
+export const setUser_ClickNum = async (_req: Request, res: Response) => {
 
 	// TODO
-	const user = getUser(req, res);
-	const { clickNum } = req.body;
+	const user = getUser(_req, res);
 
-	const connection = await pool.getConnection();
-	await connection.beginTransaction();
+	if (user) {
+	  const { clickNum } = _req.body;
 
-	await connection.query('insert into
+	  /*
+	  const connection = await pool.getConnection();
+	  await connection.beginTransaction();
+	  */
+
+	  console.log("SetClick Function Called")
+
+	  const [result] = await connection.execute("update users set click_num=? where id=?", [ clickNum, user.id ]);
+	}
 }

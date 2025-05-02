@@ -11,6 +11,7 @@ router.get("/api/auth/profile", authController.getProfile)
 */
 
 // TODO
-router.post("/api/game/update_clicks", gameController.setUser_ClickNum);
+router.put("/api/game/set_clicks", gameController.setUser_ClickNum);
+router.get("/api/game/get_clicks", gameController.getUser_ClickNum);
 
 export default router

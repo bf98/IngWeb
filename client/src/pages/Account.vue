@@ -18,7 +18,7 @@
 			logout() {
 				axios.post("/api/auth/logout/");
 				// torna alla home
-				this.$router.push("/");
+				this.$router.push("/login");
 			}
 		},
 		mounted() {
