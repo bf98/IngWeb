@@ -8,11 +8,6 @@ export async function allUsers(req: Request, res: Response) {
 	res.json(users);
 }
 
-export async function printTest(_req: Request, res: Response) {
-	
-	console.log("PRINTING ...");
-}
-
 export async function currentUser(req: Request, res: Response) {
 
 	const user = getUser(req, res);	
@@ -20,3 +15,12 @@ export async function currentUser(req: Request, res: Response) {
 	const [result] = await connection.query("select * from users where id=?", [ user.id ]);
 	res.json(result);
 }
+
+export async function get_achievements(req: Request, res: Response) {
+	
+	const user = getUser(req, res);
+	const [result] = await connection.query("select * from achievements where user_id=?", [ user.id ]);
+
+	res.json(result);
+}
+
