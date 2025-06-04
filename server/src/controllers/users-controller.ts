@@ -8,7 +8,7 @@ export async function allUsers(req: Request, res: Response) {
 	res.json(users);
 }
 
-export async function currentUser(req: Request, res: Response) {
+export async function currentUser_getData(req: Request, res: Response) {
 
 	const user = getUser(req, res);	
 
@@ -16,7 +16,7 @@ export async function currentUser(req: Request, res: Response) {
 	res.json(result);
 }
 
-export async function get_achievements(req: Request, res: Response) {
+export async function currentUser_getAchievements(req: Request, res: Response) {
 	
 	const user = getUser(req, res);
 	const [result] = await connection.query("select * from achievements where user_id=?", [ user.id ]);
@@ -24,3 +24,18 @@ export async function get_achievements(req: Request, res: Response) {
 	res.json(result);
 }
 
+export async function currentUser_getFriends(req: Request, res: Response) {
+	
+	const user = getUser(req, res);
+	const [result] = await connection.query("select * from friends where user_id=?", [ user.id ]);
+
+	res.json(result);
+}
+
+export async function getUserById(req: Request, res: Response) {
+
+	const { id } = req.params;
+	const [result] = await connection.query("select * from users where id=?", [id]);
+
+	res.json(result);
+}

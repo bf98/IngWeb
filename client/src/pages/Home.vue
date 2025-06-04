@@ -62,7 +62,7 @@
 			  <!-- Due sezioni separate, una per click e l'altra upgrades (alla Cookie Clicker?)-->
 			  <div class="col-md-8 UpgradeArea">
 				  <h2 class="text-center">Upgrades</h2>
-				  <div class="row" v-for="(row,rowIndex) in 3" :key="rowIndex">
+				  <div class="row" v-for="(row,rowIndex) in 2" :key="rowIndex">
 				  <div class="col-md-4 mb-4" v-for="(item, index) in 3" :key="index">
 				  <div class="Upgrades d-flex justify-content-center flex-wrap">
 				  <div class="card align-items-center text-center" style="width: 18rem;">

@@ -39,7 +39,7 @@
 					<tbody>
 						<tr v-for="user in usersTop">
 							<th scope="row">n</th>
-							<th scope="row">{{ user.name }}</th>
+							<th scope="row"><a :href="`profile/${user.id}`">{{ user.name }}</a></th>
 							<th scope="row">{{ user.click_num }}</th>
 						</tr>
 					</tbody>
