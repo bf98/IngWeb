@@ -6,6 +6,7 @@ import history from "connect-history-api-fallback"
 import usersRouter from "./routes/users-router"
 import leaderboardRouter from "./routes/leaderboard-router"
 import authRouter from "./routes/auth-router"
+import gameRouter from "./routes/game-router"
 
 const app: Express = express()
 const port: number = 3000
@@ -18,6 +19,7 @@ app.use(cookieParser())
 app.use(usersRouter)
 app.use(leaderboardRouter)
 app.use(authRouter)
+app.use(gameRouter)
 
 app.use(history())
 app.use(express.static("dist-frontend"))

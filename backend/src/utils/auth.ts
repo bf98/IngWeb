@@ -5,12 +5,13 @@ export interface User {
 	id: number,
 	username: string, 
 	password: string,
+	click_num: number,
 }
 
 const JWT_SECRET = "foo"
 const COOKIE_NAME = "vuepost-access-token"
 
-export const setUser = (_req: Request, res: Response, user: any) => {
+export const setUser = (req: Request, res: Response, user: any) => {
 	const accessToken = jwt.sign(user, JWT_SECRET, { expiresIn: "1 day" })
 	res.cookie(COOKIE_NAME, accessToken, {
 		maxAge: 86400000,
@@ -19,7 +20,7 @@ export const setUser = (_req: Request, res: Response, user: any) => {
 	})
 }
 
-export const getUser = (req: Request, _res: Response) => {
+export const getUser = (req: Request, res: Response) => {
 	const accessToken = req.cookies[COOKIE_NAME]
 	if (!accessToken) return null
 
@@ -32,6 +33,6 @@ export const getUser = (req: Request, _res: Response) => {
 	}
 }
 
-export const unsetUser = (_req: Request, res: Response) => {
+export const unsetUser = (req: Request, res: Response) => {
 	res.clearCookie(COOKIE_NAME)
 }
