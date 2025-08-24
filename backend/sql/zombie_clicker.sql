@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2025 at 09:20 PM
+-- Generation Time: Aug 24, 2025 at 11:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `achievements` (
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   `achievement_1` tinyint(1) DEFAULT 0,
   `achievement_2` tinyint(1) DEFAULT 0,
   `achievement_3` tinyint(1) DEFAULT 0
@@ -39,8 +39,7 @@ CREATE TABLE `achievements` (
 --
 
 INSERT INTO `achievements` (`user_id`, `achievement_1`, `achievement_2`, `achievement_3`) VALUES
-(8, 0, 0, 0),
-(11, 0, 0, 0);
+(14, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -52,14 +51,6 @@ CREATE TABLE `friends` (
   `user_id` int(11) DEFAULT NULL,
   `friend_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `friends`
---
-
-INSERT INTO `friends` (`user_id`, `friend_id`) VALUES
-(8, 11),
-(11, 8);
 
 -- --------------------------------------------------------
 
@@ -79,13 +70,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `click_num`) VALUES
-(8, 'kyle', '$2b$10$1TuReo3BemQg89.c0bTsVeo04Eh7Br8OnuZWlcAV8J2cinQd.lhlm', 1552),
-(11, 'bunnicula', '$2b$10$snKRZPUolP4O6MFkJn5Z7.qpex00DeZ9zsjz9rwZ0KoZ4VC.UJBOq', 1471),
-(12, 'foo', '$2b$10$Ia6ALX7QHvEwM9R5Bb2R1.DLpMcugeFgAkWiChDD9mHs3.r/xZmeO', 17);
+(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 104);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `achievements`
+--
+ALTER TABLE `achievements`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -101,7 +96,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

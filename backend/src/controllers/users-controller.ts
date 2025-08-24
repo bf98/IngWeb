@@ -11,34 +11,40 @@ export async function allUsers(req: Request, res: Response) {
 export async function currentUser_getData(req: Request, res: Response) {
 
 	const user = getUser(req, res);	
-
-	const [result] = await connection.query("select * from users where id=?", [ user.id ]);
-	res.json(result);
+	
+	if (user) {
+		const [result] = await connection.query("select * from users where id=?", [ user.id ]);
+		res.json(result);
+	}
 }
 
 export async function currentUser_getAchievements(req: Request, res: Response) {
 	
 	const user = getUser(req, res);
-	const [result] = await connection.query("select * from achievements where user_id=?", [ user.id ]);
-
-	res.json(result);
+	
+	if (user) {
+		const [result] = await connection.query("select * from achievements where user_id=?", [ user.id ]);
+		res.json(result);
+	}
 }
 
 export async function currentUser_getFriends(req: Request, res: Response) {
 	
 	const user = getUser(req, res);
-	const [friend_ids] = await connection.query("select friend_id from friends where user_id=?", [ user.id ]);
-	const friend_array: number[] = friend_ids.map((friend_ids: { friend_id: number }) => friend_ids.friend_id);
 
-	console.log(friend_array);
+	if (user) {
+		const [friend_ids] = await connection.query("select friend_id from friends where user_id=?", [ user.id ]);
+		const friend_array: number[] = friend_ids.map((friend_ids: { friend_id: number }) => friend_ids.friend_id);
 
-	if (friend_array.length > 0) {
+		console.log(friend_array);
 
-		const [result] = await connection.query("select * from users where id in (?)", [friend_array]);
-		console.log(result);
-		res.json(result);
+		if (friend_array.length > 0) {
+
+			const [result] = await connection.query("select * from users where id in (?)", [friend_array]);
+			console.log(result);
+			res.json(result);
+		}
 	}
-
 }
 
 export async function getUserById(req: Request, res: Response) {
