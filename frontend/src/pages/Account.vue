@@ -42,33 +42,31 @@
 </script>
 
 <template>
-	<div class="account-page">
-		<div class="account-section">
-			<div v-if="datiUser[0]">
-				<div class="account-info">
-					<h2>Account</h2>
-					<p><strong>Username<br />{{ datiUser[0].name }}</strong></p>
-					<p><strong>Total Clicks<br />{{ datiUser[0].click_num }}</strong></p>
-					<p><strong>Achievements<br />{{ datiAchievements[0].achievement_1 }}, {{ datiAchievements[0].achievement_2 }}, {{ datiAchievements[0].achievement_3 }}</strong></p>
-
-					<div class="logout-button">
-						<button v-if="datiUser[0]" class="nav-item button is-primary" @click="logout">Log-out</button>
-					</div>
-				</div>
-				<div class="flist-info">
-					<h1>Friend List <!--{{friend.list}}--></h1>
-					<p v-for="friend in datiFriends">
-						<a :href="`profile/${friend.id}`">{{ friend.name }}</a>
-					</p>
-				</div>
-			</div>
-			<div v-else>
-				<div class="account-header">
-					<h1>Account</h1>
-				</div>
-				<p><a href="/login">Login / Sign Up</a></p>
-			</div>
-		</div>
+    <div class="container-fluid fill d-flex justify-content-center w-100">
+	<div class="row align-items-center">
+	    <div class="col-sm text-center">
+		<form class="form-box p-4">
+		    <div class="form-group mt-2">
+			<input class="form-control" placeholder="Username">
+		    </div>
+		    <div class="form-group mt-2">
+			<input type="password" class="form-control" placeholder="Password">
+		    </div>
+		    <button type="submit" class="btn btn-secondary mt-3">Login</button>
+		</form>
+	    </div>
+	    <div class="col-sm text-center">
+		<form class="form-box p-4">
+		    <div class="form-group mt-2">
+			<input class="form-control" placeholder="Username">
+		    </div>
+		    <div class="form-group mt-2">
+			<input type="password" class="form-control" placeholder="Password">
+		    </div>
+		    <button type="submit" class="btn btn-secondary mt-3">Sign-up</button>
+		</form>
+	    </div>
 	</div>
+    </div>
 </template>
 

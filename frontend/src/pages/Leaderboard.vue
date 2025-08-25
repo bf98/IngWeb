@@ -1,5 +1,5 @@
 <script lang="ts">
-	
+
 	import { defineComponent } from "vue"
 	import axios from "axios"
 	import { User } from "../types"
@@ -25,45 +25,48 @@
 </script>
 
 <template>
-	<div class="table-container">
-		<div class="container-custom">
-				<table class="big-table">
-					<caption>Top 3 Clickers</caption>
-					<thead>
-						<tr>
-							<th scope="col">Position</th>
-							<th scope="col">Username</th>
-							<th scope="col">Points</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr v-for="user in usersTop">
-							<th scope="row">n</th>
-							<th scope="row"><a :href="`profile/${user.id}`">{{ user.name }}</a></th>
-							<th scope="row">{{ user.click_num }}</th>
-						</tr>
-					</tbody>
-				</table>
+    <div class="container-fluid fill d-flex justify-content-center w-100">
+	<div class="row align-items-center">
+		<div class="col text-center">
+		  <table class="table">
+			  <thead>
+				  <tr scope="col">Position</tr>
+				  <tr scope="col">User</tr>
+				  <tr scope="col">Score</tr>
+			  </thead>	
+			  <tbody>
+				  <tr>
+					  <th scope="row">1</th>
+					  <td>User</td>
+					  <td>Num</td>
+				  </tr>
+				  <tr>
+					  <th scope="row">2</th>
+					  <td>User</td>
+					  <td>Num</td>
+				  </tr>
+			  </tbody>
+		  </table>
+		  <table class="table table-box">
+			  <thead>
+				  <tr scope="col">Position</tr>
+				  <tr scope="col">User</tr>
+				  <tr scope="col">Score</tr>
+			  </thead>	
+			  <tbody>
+				  <tr>
+					  <th scope="row">1</th>
+					  <td>User</td>
+					  <td>Num</td>
+				  </tr>
+				  <tr>
+					  <th scope="row">2</th>
+					  <td>User</td>
+					  <td>Num</td>
+				  </tr>
+			  </tbody>
+		  </table>
 		</div>
-
-		<div class="container-custom2">
-			<table class="small-table">
-				<caption>4th - 10th Places</caption>
-				<thead>
-					<tr>
-						<th scope="col">Position</th>
-						<th scope="col">Username</th>
-						<th scope="col">Points</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="user in usersOthers">
-						<th scope="row">n</th>
-						<th scope="row">{{ user.name }}</th>
-						<th scope="row">{{ user.click_num }}</th>
-					</tr>
-				</tbody>
-				</table>
-			</div>
-		</div>
+	</div>
+	</div>
 </template>

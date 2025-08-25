@@ -11,17 +11,17 @@ import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const router: Router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    { path: "/", component: Home },
+    history: createWebHistory(),
+    routes: [
+	{ path: "/", component: Home },
 	{ path: "/account", component: Account },
 	{ path: "/leaderboard", component: Leaderboard },
 	{ path: "/login", component: Login},
 	{ path: "/register", component: Register },
 	{ path: "/profile/:userId", component: Profile, props: true },
-  ]
+    ]
 })
 
 createApp(App)
-  .use(router)
-  .mount("#app")
+.use(router)
+.mount("#app")
