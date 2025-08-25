@@ -56,10 +56,64 @@
 </script>
 
 <template>
-    <div class="container-fluid fill d-flex justify-content-center w-100">
+    <div class="container fill d-flex justify-content-center">
 	<div class="row align-items-center">
-	    <div class="col-sm text-center">
-			<p>Home</p>
+	    <div class="col-md-8">
+		<div class="container-flex section p-4">
+		    <h2 class="text-center">
+			Upgrades
+		    </h2>
+		    <div class="row">
+			<div class="col">
+			    <div class="card-body">
+				<h5 class="card-title">Gun</h5>
+				<p class="card-text">Gun 1</p>
+			    </div>
+			</div>
+			<div class="col">
+			    <div class="card-body">
+				<h5 class="card-title">Gun</h5>
+				<p class="card-text">Gun 1</p>
+			    </div>
+			</div>
+			<div class="col">
+			    <div class="card-body">
+				<h5 class="card-title">Gun</h5>
+				<p class="card-text">Gun 1</p>
+			    </div>
+			</div>
+		    </div>
+		    <div class="row">
+			<div class="col">
+			    <div class="card-body">
+				<h5 class="card-title">Gun</h5>
+				<p class="card-text">Gun 1</p>
+			    </div>
+			</div>
+			<div class="col">
+			    <div class="card-body">
+				<h5 class="card-title">Gun</h5>
+				<p class="card-text">Gun 1</p>
+			    </div>
+			</div>
+			<div class="col">
+			    <div class="card-body">
+				<h5 class="card-title">Gun</h5>
+				<p class="card-text">Gun 1</p>
+			    </div>
+			</div>
+		    </div>
+		</div>
+	    </div>
+	    <div class="col-md-4 d-flex">
+		<div class="container-flex section p-4">
+		    <div class="row">
+			<p>Click Num: n</p>
+		    </div>
+		    <div class="row">
+			<button type="submit" class="btn btn-secondary mt-3">Click</button>
+		    </div>
+		</div>
 	    </div>
 	</div>
     </div>

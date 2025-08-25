@@ -1,6 +1,6 @@
 <script lang="ts">
 
-	import { defineComponent } from "vue"
+    import { defineComponent } from "vue"
 	import axios from "axios"
 	import { User } from "../types"
 
@@ -25,48 +25,40 @@
 </script>
 
 <template>
-    <div class="container-fluid fill d-flex justify-content-center w-100">
-	<div class="row align-items-center">
-		<div class="col text-center">
-		  <table class="table">
-			  <thead>
-				  <tr scope="col">Position</tr>
-				  <tr scope="col">User</tr>
-				  <tr scope="col">Score</tr>
-			  </thead>	
-			  <tbody>
-				  <tr>
-					  <th scope="row">1</th>
-					  <td>User</td>
-					  <td>Num</td>
-				  </tr>
-				  <tr>
-					  <th scope="row">2</th>
-					  <td>User</td>
-					  <td>Num</td>
-				  </tr>
-			  </tbody>
-		  </table>
-		  <table class="table table-box">
-			  <thead>
-				  <tr scope="col">Position</tr>
-				  <tr scope="col">User</tr>
-				  <tr scope="col">Score</tr>
-			  </thead>	
-			  <tbody>
-				  <tr>
-					  <th scope="row">1</th>
-					  <td>User</td>
-					  <td>Num</td>
-				  </tr>
-				  <tr>
-					  <th scope="row">2</th>
-					  <td>User</td>
-					  <td>Num</td>
-				  </tr>
-			  </tbody>
-		  </table>
+    <div class="container-fluid fill d-flex justify-content-center">
+	<div class="row align-items-center w-50">
+	    <div class="col">
+		<div class="container-flex section p-4">
+		    <table class="table table-dark table-striped">
+			<thead class="thead-dark">
+			    <tr scope="col">Position</tr>
+			    <tr scope="col">User</tr>
+			    <tr scope="col">Score</tr>
+			</thead>	
+			<tbody>
+			    <tr v-for="user in usersTop">
+				<th scope="row">n</th>
+				<td>{{ user.name }}</td>
+				<td>{{ user.click_num }}</td>
+			    </tr>
+			</tbody>
+		    </table>
+		    <table class="table table-dark table-striped">
+			<thead>
+			    <tr scope="col">Position</tr>
+			    <tr scope="col">User</tr>
+			    <tr scope="col">Score</tr>
+			</thead>	
+			<tbody>
+			    <tr v-for="user in usersOthers">
+				<th scope="row">n</th>
+				<td>{{ user.name }}</td>
+				<td>{{ user.click_num }}</td>
+			    </tr>
+			</tbody>
+		    </table>
 		</div>
+	    </div>
 	</div>
-	</div>
+    </div>
 </template>

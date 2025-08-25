@@ -1,6 +1,6 @@
 <script lang="ts">
-	
-	import { defineComponent } from "vue"
+
+    import { defineComponent } from "vue"
 	import axios from "axios"
 	import { User, AchievementsList } from "../types"
 
@@ -42,29 +42,44 @@
 </script>
 
 <template>
-    <div class="container-fluid fill d-flex justify-content-center w-100">
-	<div class="row align-items-center">
-	    <div class="col-sm text-center">
-		<form class="form-box p-4">
-		    <div class="form-group mt-2">
-			<input class="form-control" placeholder="Username">
+    <div v-if="datiUser[0]">
+	<div class="container-fluid fill d-flex justify-content-center w-100">
+	    <div class="row align-items-center">
+		<div class="col">
+		    <div class="container-flex section p-4">
+			<button class="nav-item button is-primary" @click="logout">
+			    Log-Out
+			</button>
 		    </div>
-		    <div class="form-group mt-2">
-			<input type="password" class="form-control" placeholder="Password">
-		    </div>
-		    <button type="submit" class="btn btn-secondary mt-3">Login</button>
-		</form>
+		</div>
 	    </div>
-	    <div class="col-sm text-center">
-		<form class="form-box p-4">
-		    <div class="form-group mt-2">
-			<input class="form-control" placeholder="Username">
-		    </div>
-		    <div class="form-group mt-2">
-			<input type="password" class="form-control" placeholder="Password">
-		    </div>
-		    <button type="submit" class="btn btn-secondary mt-3">Sign-up</button>
-		</form>
+	</div>
+    </div>
+    <div v-else>
+	<div class="container-fluid fill d-flex justify-content-center w-100">
+	    <div class="row align-items-center">
+		<div class="col-sm text-center">
+		    <form class="form-box p-4">
+			<div class="form-group mt-2">
+			    <input class="form-control" placeholder="Username">
+			</div>
+			<div class="form-group mt-2">
+			    <input type="password" class="form-control" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-secondary mt-3">Login</button>
+		    </form>
+		</div>
+		<div class="col-sm text-center">
+		    <form class="form-box p-4">
+			<div class="form-group mt-2">
+			    <input class="form-control" placeholder="Username">
+			</div>
+			<div class="form-group mt-2">
+			    <input type="password" class="form-control" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-secondary mt-3">Sign-up</button>
+		    </form>
+		</div>
 	    </div>
 	</div>
     </div>
