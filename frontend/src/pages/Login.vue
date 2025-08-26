@@ -1,5 +1,5 @@
 <script lang="ts">
-	import axios from "axios"
+    import axios from "axios"
 	import { defineComponent } from "vue"
 
 	export default defineComponent({
@@ -47,41 +47,31 @@
 </script>
 
 <template>
-	<div class="access-container">
-	  <div class="container-login">
-		<h2 class="Login">Login</h2>
-		<div class="container-user"></div>
-		<form @submit.prevent="onSubmit_Login">
-		  <li>
-			<label for="username">Username</label>
-			<input type="text" v-model="usernameLogin" name="usernameLogin" />
-		  </li>
-		  <li>
-			<label for="password">Password</label>
-			<input type="password" v-model="passwordLogin" name="passwordLogin" />
-		  </li>
-		  <li class="LoginButton">
-			<input type="submit" name="submit" value="Confirm" />
-		  </li>
+    <div class="container-fluid fill d-flex justify-content-center w-100">
+	<div class="row align-items-center">
+	    <div class="col-sm text-center">
+		<form class="form-box p-4" @submit.prevent="onSubmit_Login">
+		    <div class="form-group mt-2">
+			<input class="form-control" v-model="usernameLogin" placeholder="Username">
+		    </div>
+		    <div class="form-group mt-2">
+			<input type="password" class="form-control" v-model="passwordLogin" placeholder="Password">
+		    </div>
+		    <button type="submit" class="btn btn-secondary mt-3">Login</button>
 		</form>
-	  </div>
-  
-	  <div class="container-register">
-		<h2 class="Register">Register</h2>
-		<div class="container-user"></div>
-		<form @submit.prevent="onSubmit_Register">
-		  <li>
-			<label for="usernameRegister">Username</label>
-			<input type="text" v-model="usernameRegister" name="usernameRegister" />
-		  </li>
-		  <li>
-			<label for="password">Password</label>
-			<input type="password" v-model="passwordRegister" name="passwordRegister" />
-		  </li>
-		  <li class="RegisterButton">
-			<input type="submit" name="submit" value="Register" />
-		  </li>
+	    </div>
+
+	    <div class="col-sm text-center" @submit.prevent="onSubmit_Register">
+		<form class="form-box p-4">
+		    <div class="form-group mt-2">
+			<input class="form-control" v-model="usernameRegister" placeholder="Username">
+		    </div>
+		    <div class="form-group mt-2">
+			<input type="password" class="form-control" v-model="passwordRegister" placeholder="Password">
+		    </div>
+		    <button type="submit" class="btn btn-secondary mt-3">Sign-up</button>
 		</form>
-	  </div>
+	    </div>
 	</div>
-  </template>
+    </div>
+</template>

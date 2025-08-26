@@ -36,6 +36,8 @@ export const register = async (req: Request, res: Response) => {
 	
 	await connection.execute("insert into achievements (user_id) values (?)",
 							[ newUser.id, ])
+	await connection.execute("insert into items (user_id) values (?)",
+							[ newUser.id, ])
 
 	setUser(req, res, newUser)
 	res.json({ message: "Registration succesfully completed" })

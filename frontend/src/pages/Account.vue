@@ -47,9 +47,41 @@
 	    <div class="row align-items-center">
 		<div class="col">
 		    <div class="container-flex section p-4">
+			<p>Your Username: {{ datiUser[0].name }}</p>
+			<p>Your Clicks: {{ datiUser[0].click_num }}</p>
 			<button class="nav-item button is-primary" @click="logout">
 			    Log-Out
 			</button>
+		    </div>
+		</div>
+		<div class="col">
+		    <div class="container-flex section p-4">
+			<p>Achievements</p>
+			<div v-if="datiAchievements[0].achievement_1 == 0 && datiAchievements[0].achievement_2 == 0 && datiAchievements[0].achievement_3 == 0">
+			    You have no achievements.
+			</div>
+			<div v-if="datiAchievements[0].achievement_1">
+			    <img src="../assets/img/back_bronze.png">
+			</div>
+			<div v-if="datiAchievements[0].achievement_2">
+			    <img src="../assets/img/back_silver.png">
+			</div>
+			<div v-if="datiAchievements[0].achievement_3">
+			    <img src="../assets/img/back_gold.png">
+			</div>
+		    </div>
+		</div>
+	    </div>
+	    <div class="row align-items-center">
+		<div class="col">
+		    <div class="container-flex section p-4">
+			<p>Friend List</p>
+			<div v-if="datiFriends[0]">
+			    <!-- DA IMPLEMENTARE --> 
+			</div>
+			<div v-else>
+			    <p>The friend list is empty.</p>
+			</div>
 		    </div>
 		</div>
 	    </div>
@@ -58,27 +90,10 @@
     <div v-else>
 	<div class="container-fluid fill d-flex justify-content-center w-100">
 	    <div class="row align-items-center">
-		<div class="col-sm text-center">
-		    <form class="form-box p-4">
-			<div class="form-group mt-2">
-			    <input class="form-control" placeholder="Username">
-			</div>
-			<div class="form-group mt-2">
-			    <input type="password" class="form-control" placeholder="Password">
-			</div>
-			<button type="submit" class="btn btn-secondary mt-3">Login</button>
-		    </form>
-		</div>
-		<div class="col-sm text-center">
-		    <form class="form-box p-4">
-			<div class="form-group mt-2">
-			    <input class="form-control" placeholder="Username">
-			</div>
-			<div class="form-group mt-2">
-			    <input type="password" class="form-control" placeholder="Password">
-			</div>
-			<button type="submit" class="btn btn-secondary mt-3">Sign-up</button>
-		    </form>
+		<div class="col">
+		    <div class="container-flex section p-4">
+			<p><a href="/login">Login / Sign Up</a></p>
+		    </div>
 		</div>
 	    </div>
 	</div>
