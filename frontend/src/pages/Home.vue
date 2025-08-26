@@ -2,7 +2,7 @@
 
     import { defineComponent } from "vue"
 	import axios from "axios"
-	import { User } from "../types"
+	import { User, ItemsList, AchivementsList } from "../types"
 
 	export default defineComponent({
 		data() {
@@ -16,24 +16,31 @@
 			}
 		},
 		methods: {
-			async getUser() {
+			getUser() {
 
 				axios.get("/api/auth/profile").then(response => this.datiUser[0] = response.data)
 
 			},
-			async getAchievements() {
+			getAchievements() {
 
-				axios.get("/api/get_achievements").then(response => this.datiAchievements[0] = response.data)
+				axios.get("/api/get_achievements").then(response => this.datiAchievements = response.data)
 
 			},
-			async getItems() {
+			getItems() {
 
-				axios.get("/api/get_items").then(response => this.datiItems[0] = response.data)
+				axios.get("/api/get_items").then(response => this.datiItems = response.data)
 
 			},
 			async incrementClicks() {
 
 				if (this.datiUser[0]) {
+					this.clickCounter++;
+				}
+
+			},
+			async autoIncrementClicks() {
+
+				if (this.datiUser[0] && this.datiItems[0].item1) {
 					this.clickCounter++;
 				}
 
@@ -45,16 +52,17 @@
 				});
 
 			},
-			async getClicks() {
+			getClicks() {
 
 				axios.get("/api/game/get_clicks").then(response => this.clickCounter = response.data[0].click_num);
-				console.log(this.clickCounter);
 
 			},
 		},
 		mounted() {
 			this.getUser();
+			this.getItems();
 			this.getClicks();
+			setInterval(this.autoIncrementClicks, 1000);
 			window.addEventListener('beforeunload', this.updateClicks);
 		},
 		beforeRouteLeave(to, from) {
@@ -86,7 +94,7 @@
 			    <div class="col">
 				<div class="card-body">
 				    <h5 class="card-title">Gun</h5>
-				    <p class="card-text">Gun 1</p>
+				    <p class="card-text">1</p>
 				</div>
 			    </div>
 			    <div class="col">

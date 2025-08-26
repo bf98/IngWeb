@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 24, 2025 at 11:25 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Creato il: Ago 27, 2025 alle 00:01
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `achievements`
+-- Struttura della tabella `achievements`
 --
 
 CREATE TABLE `achievements` (
@@ -35,16 +35,17 @@ CREATE TABLE `achievements` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `achievements`
+-- Dump dei dati per la tabella `achievements`
 --
 
 INSERT INTO `achievements` (`user_id`, `achievement_1`, `achievement_2`, `achievement_3`) VALUES
-(14, 0, 0, 0);
+(14, 1, 0, 0),
+(15, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `friends`
+-- Struttura della tabella `friends`
 --
 
 CREATE TABLE `friends` (
@@ -55,7 +56,27 @@ CREATE TABLE `friends` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struttura della tabella `items`
+--
+
+CREATE TABLE `items` (
+  `user_id` int(11) NOT NULL,
+  `item1` int(11) NOT NULL DEFAULT 0,
+  `item2` int(11) NOT NULL DEFAULT 0,
+  `item3` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `items`
+--
+
+INSERT INTO `items` (`user_id`, `item1`, `item2`, `item3`) VALUES
+(14, 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `users`
 --
 
 CREATE TABLE `users` (
@@ -66,37 +87,44 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dump dei dati per la tabella `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `click_num`) VALUES
-(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 104);
+(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 676),
+(15, 'user2', '$2b$10$40UTkCcqf395KZSVhJVfsOZoqUi1WaU33O6GdouJ4WtxcO12G8nj6', 0);
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `achievements`
+-- Indici per le tabelle `achievements`
 --
 ALTER TABLE `achievements`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indici per le tabelle `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indici per le tabelle `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
