@@ -89,18 +89,27 @@
 				<div class="card-body">
 				    <h5 class="card-title">Automatic Gun</h5>
 				    <p class="card-text">Automatically clicks 1 time per second</p>
+					<button class="nav-item button is-primary">
+						Buy
+					</button>
 				</div>
 			    </div>
 			    <div class="col">
 				<div class="card-body">
 				    <h5 class="card-title">Gun</h5>
 				    <p class="card-text">1</p>
+					<button class="nav-item button is-primary">
+						Buy
+					</button>
 				</div>
 			    </div>
 			    <div class="col">
 				<div class="card-body">
 				    <h5 class="card-title">Gun</h5>
 				    <p class="card-text">Gun 1</p>
+					<button class="nav-item button is-primary">
+						Buy
+					</button>
 				</div>
 			    </div>
 			</div>
@@ -109,7 +118,10 @@
 		<div class="col-md-4 d-flex">
 		    <div class="container-flex section p-4">
 			<div class="row">
-			    <p>Click Num: {{ clickCounter }}</p>
+			    <p>Zombie Killed: {{ clickCounter }}</p>
+			    <p>Item1 Quantity: {{ datiItems[0].item1 }}</p>
+			    <p>Item2 Quantity: {{ datiItems[0].item2 }}</p>
+			    <p>Item3 Quantity: {{ datiItems[0].item3 }}</p>
 			</div>
 			<div class="row">
 			    <button class="nav-item button is-primary" v-on:click="incrementClicks()">

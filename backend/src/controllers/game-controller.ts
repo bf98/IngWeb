@@ -35,3 +35,21 @@ export const setUser_ClickNum = async (_req: Request, res: Response) => {
 	  const [result] = await connection.execute("update users set click_num=? where id=?", [ clickNum, user.id ]);
 	}
 }
+
+// DA FINIRE
+export const setUser_ItemsNum = async (_req: Request, res: Response) => {
+
+	// TODO
+	const user = getUser(_req, res);
+
+	if (user) {
+	  const { clickNum } = _req.body;
+
+	  /*
+	  const connection = await pool.getConnection();
+	  await connection.beginTransaction();
+	  */
+
+	  const [result] = await connection.execute("update items set click_num=? where id=?", [ clickNum, user.id ]);
+	}
+}
