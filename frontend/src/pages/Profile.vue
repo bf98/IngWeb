@@ -38,6 +38,11 @@
 			    
 				axios.get(`/api/achievements/${this.userId}`).then(response => this.datiAchievements = response.data);
 			},
+			addFriend() {
+			   if (this.datiUser) { 
+				axios.put(`/api/game/add_friend/${this.userId}`);
+			    }
+			},
 		},
 		mounted() {
 			this.getUser();
@@ -58,7 +63,7 @@
 		    <div class="container section p-4">
 			<p>Username: {{ datiProfile[0].name }}</p>
 			<p>Click Number: {{ datiProfile[0].click_num }}</p>
-			<button class="nav-item button is-primary" v-if="datiUser.id != userId">
+			<button class="nav-item button is-primary" v-if="datiUser && datiUser.id != userId" v-on:click="addFriend()">
 			    Add Friend
 			</button>
 		    </div>

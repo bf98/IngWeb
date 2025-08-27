@@ -37,7 +37,6 @@ export const setUser_ClickNum = async (_req: Request, res: Response) => {
 // DA FINIRE
 export const setUser_ItemsNum = async (_req: Request, res: Response) => {
 
-	// TODO
 	const user = getUser(_req, res);
 
 	if (user) {
@@ -49,5 +48,17 @@ export const setUser_ItemsNum = async (_req: Request, res: Response) => {
 	  */
 
 	  const [result] = await connection.execute("update items set item1=?, item2=?, item3=? where user_id=?", [ item1, item2, item3, user.id ]);
+	}
+}
+
+export const setUser_AddFriend = async (req: Request, res: Response) => {
+
+	// TODO
+	const user = getUser(req, res);
+	const { friend_id } = req.params;
+
+	if (user) {
+
+	  const [result] = await connection.execute("insert into friends (user_id, friend_id) values (?, ?)", [ user.id, friend_id ]);
 	}
 }
