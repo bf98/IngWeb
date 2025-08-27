@@ -34,7 +34,7 @@
     <div v-if="datiUser[0]">
 	<div class="container fill d-flex justify-content-center">
 	    <div class="row align-items-center">
-		<div class="row">
+		<div class="col">
 		    <div class="container section p-4">
 			<p>Username: {{ datiUser[0].name }}</p>
 			<p>Click Number: {{ datiUser[0].click_num }}</p>
