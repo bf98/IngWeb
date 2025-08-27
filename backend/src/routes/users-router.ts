@@ -9,5 +9,6 @@ router.get("/api/get_achievements", usersController.currentUser_getAchievements)
 router.get("/api/get_items", usersController.currentUser_getItems)
 router.get("/api/get_friends", usersController.currentUser_getFriends)
 router.get("/api/users/:id", usersController.getUserById);
+router.get("/api/achievements/:id", usersController.getAchievementsById);
 
 export default router
