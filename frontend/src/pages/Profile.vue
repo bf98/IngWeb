@@ -23,7 +23,7 @@
 			{
 				axios.get("/api/auth/profile").then(response => this.datiUser = response.data);
 			},
-			checkProfile() {
+			checkProfile() { // forse da rimuovere
 			    if (this.datiUser) {
 				if (this.datiUser.id == this.userId) {
 				    this.$router.push("/account");
