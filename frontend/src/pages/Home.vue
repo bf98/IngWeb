@@ -41,7 +41,7 @@
 			async autoIncrementClicks() {
 
 				if (this.datiUser[0] && this.datiItems[0].item1) {
-					this.clickCounter++;
+				    this.clickCounter = this.clickCounter + (1 * (this.datiItems[0].item1)) + (100 * (this.datiItems[0].item2)) + (1000 * (this.datiItems[0].item3));
 				}
 
 			},
@@ -51,6 +51,35 @@
 					clickNum: this.clickCounter,
 				});
 
+			},
+			async incrementItem1() {
+
+				if (this.datiUser[0]) {
+				    this.datiItems[0].item1++;	
+				    this.clickCounter -= 500;
+				}
+			},
+			async incrementItem2() {
+
+				if (this.datiUser[0]) {
+				    this.datiItems[0].item2++;	
+				    this.clickCounter -= 1000;
+				}
+			},
+			async incrementItem3() {
+
+				if (this.datiUser[0]) {
+				    this.datiItems[0].item3++;	
+				    this.clickCounter -= 10000;
+				}
+			},
+			async updateItems() {
+
+				axios.put("/api/game/set_items", {
+					item1: this.datiItems[0].item1,
+					item2: this.datiItems[0].item2,
+					item3: this.datiItems[0].item3,
+				});
 			},
 			getClicks() {
 
@@ -64,12 +93,15 @@
 			this.getClicks();
 			setInterval(this.autoIncrementClicks, 1000);
 			window.addEventListener('beforeunload', this.updateClicks);
+			window.addEventListener('beforeunload', this.updateItems);
 		},
 		beforeRouteLeave(to, from) {
 			this.updateClicks();
+			this.updateItems();
 		},
 		beforeDestroy() {
 			window.removeEventListener('beforeunload', this.updateClicks);
+			window.removeEventListener('beforeunload', this.updateItems);
 		},
 	})
 
@@ -87,28 +119,28 @@
 			<div class="row">
 			    <div class="col">
 				<div class="card-body">
-				    <h5 class="card-title">Automatic Gun</h5>
-				    <p class="card-text">Automatically clicks 1 time per second</p>
-					<button class="nav-item button is-primary">
-						Buy
+				    <h5 class="card-title">Virus 1</h5>
+				    <p class="card-text">Generates 1 zombie per second</p>
+					<button class="nav-item button is-primary" v-on:click="incrementItem1()">
+						Research	
 					</button>
 				</div>
 			    </div>
 			    <div class="col">
 				<div class="card-body">
-				    <h5 class="card-title">Gun</h5>
-				    <p class="card-text">1</p>
-					<button class="nav-item button is-primary">
-						Buy
+				    <h5 class="card-title">Virus 2</h5>
+				    <p class="card-text">Virus 2</p>
+					<button class="nav-item button is-primary" v-on:click="incrementItem2()">
+						Research	
 					</button>
 				</div>
 			    </div>
 			    <div class="col">
 				<div class="card-body">
-				    <h5 class="card-title">Gun</h5>
-				    <p class="card-text">Gun 1</p>
-					<button class="nav-item button is-primary">
-						Buy
+				    <h5 class="card-title">Virus 3</h5>
+				    <p class="card-text">Virus 3</p>
+					<button class="nav-item button is-primary" v-on:click="incrementItem3()">
+						Research
 					</button>
 				</div>
 			    </div>
@@ -118,14 +150,14 @@
 		<div class="col-md-4 d-flex">
 		    <div class="container-flex section p-4">
 			<div class="row">
-			    <p>Zombie Killed: {{ clickCounter }}</p>
-			    <p>Item1 Quantity: {{ datiItems[0].item1 }}</p>
-			    <p>Item2 Quantity: {{ datiItems[0].item2 }}</p>
-			    <p>Item3 Quantity: {{ datiItems[0].item3 }}</p>
+			    <p>Generated Zombies: {{ clickCounter }}</p>
+			    <p>Virus1 Level: {{ datiItems[0].item1 }}</p>
+			    <p>Virus2 Level: {{ datiItems[0].item2 }}</p>
+			    <p>Virus3 Level: {{ datiItems[0].item3 }}</p>
 			</div>
 			<div class="row">
 			    <button class="nav-item button is-primary" v-on:click="incrementClicks()">
-				Click
+				Generate	
 			    </button>
 			</div>
 		    </div>
