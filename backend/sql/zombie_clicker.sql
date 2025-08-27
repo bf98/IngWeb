@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ago 27, 2025 alle 00:01
+-- Creato il: Ago 27, 2025 alle 20:17
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -50,8 +50,16 @@ INSERT INTO `achievements` (`user_id`, `achievement_1`, `achievement_2`, `achiev
 
 CREATE TABLE `friends` (
   `user_id` int(11) DEFAULT NULL,
-  `friend_id` int(11) DEFAULT NULL
+  `friend_id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `friends`
+--
+
+INSERT INTO `friends` (`user_id`, `friend_id`, `id`) VALUES
+(14, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -71,7 +79,7 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`user_id`, `item1`, `item2`, `item3`) VALUES
-(14, 1, 0, 0);
+(14, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -91,7 +99,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `click_num`) VALUES
-(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 676),
+(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 0),
 (15, 'user2', '$2b$10$40UTkCcqf395KZSVhJVfsOZoqUi1WaU33O6GdouJ4WtxcO12G8nj6', 0);
 
 --
@@ -103,6 +111,12 @@ INSERT INTO `users` (`id`, `name`, `password`, `click_num`) VALUES
 --
 ALTER TABLE `achievements`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indici per le tabelle `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `items`
@@ -119,6 +133,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+
+--
+-- AUTO_INCREMENT per la tabella `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
