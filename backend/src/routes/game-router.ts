@@ -15,5 +15,7 @@ router.put("/api/game/set_clicks", gameController.setUser_ClickNum);
 router.get("/api/game/get_clicks", gameController.getUser_ClickNum);
 router.put("/api/game/set_items", gameController.setUser_ItemsNum);
 router.put("/api/game/add_friend/:friend_id", gameController.setUser_AddFriend);
+router.get("/api/game/get_score", gameController.getUser_ScoreNum);
+router.put("/api/game/set_score", gameController.setUser_ScoreNum);
 
 export default router

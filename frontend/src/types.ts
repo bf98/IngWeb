@@ -2,6 +2,7 @@ export interface User {
 
     name: string
     click_num: int
+    score: int
 }
 
 export interface AchievementsList {

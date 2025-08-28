@@ -62,3 +62,33 @@ export const setUser_AddFriend = async (req: Request, res: Response) => {
 	  const [result] = await connection.execute("insert into friends (user_id, friend_id) values (?, ?)", [ user.id, friend_id ]);
 	}
 }
+
+export const getUser_ScoreNum = async (_req: Request, res: Response) => {
+
+	const user = getUser(_req, res);
+	// TODO
+	if (user) {
+	  const [score] = await connection.execute("SELECT score from users where id=?", [user.id]);
+	  res.json(score);
+	}
+	else {
+	  res.json({ message: "You need to be logged" });
+	}
+}
+
+export const setUser_ScoreNum = async (_req: Request, res: Response) => {
+
+	// TODO
+	const user = getUser(_req, res);
+
+	if (user) {
+	  const { score } = _req.body;
+
+	  /*
+	  const connection = await pool.getConnection();
+	  await connection.beginTransaction();
+	  */
+
+	  const [result] = await connection.execute("update users set score=? where id=?", [ score, user.id ]);
+	}
+}
