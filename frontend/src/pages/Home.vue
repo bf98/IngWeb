@@ -12,6 +12,7 @@
 				datiAchievements: [] as AchievementsList[],
 				datiItems: [] as ItemsList[],
 				clickCounter: 0,	
+				gameScore: 0,
 
 			}
 		},
@@ -31,6 +32,15 @@
 				axios.get("/api/get_items").then(response => this.datiItems = response.data)
 
 			},
+			item1Price() {
+				return (50 + (50 * this.datiItems[0].item1));
+			},
+			item2Price() {
+				return (500 + (500 * this.datiItems[0].item2));
+			},
+			item3Price() {
+				return (1500 + (1500 * this.datiItems[0].item3));
+			},
 			async incrementClicks() {
 
 				if (this.datiUser[0]) {
@@ -41,7 +51,7 @@
 			async autoIncrementClicks() {
 
 				if (this.datiUser[0] && this.datiItems[0].item1) {
-				    this.clickCounter = this.clickCounter + (1 * (this.datiItems[0].item1)) + (100 * (this.datiItems[0].item2)) + (1000 * (this.datiItems[0].item3));
+				    this.clickCounter = this.clickCounter + (1 * (this.datiItems[0].item1)) + (100 * (this.datiItems[0].item2)) + (500 * (this.datiItems[0].item3));
 				}
 
 			},
@@ -54,23 +64,23 @@
 			},
 			async incrementItem1() {
 
-				if (this.datiUser[0]) {
+				if (this.datiUser[0] && this.clickCounter >= this.item1Price()) {
+				    this.clickCounter -= this.item1Price();
 				    this.datiItems[0].item1++;	
-				    this.clickCounter -= 500;
 				}
 			},
 			async incrementItem2() {
 
-				if (this.datiUser[0]) {
+				if (this.datiUser[0] && this.clickCounter >= this.item2Price()) {
+				    this.clickCounter -= this.item2Price();
 				    this.datiItems[0].item2++;	
-				    this.clickCounter -= 1000;
 				}
 			},
 			async incrementItem3() {
 
-				if (this.datiUser[0]) {
+				if (this.datiUser[0] && this.clickCounter >= this.item3Price()) {
+				    this.clickCounter -= this.item3Price();
 				    this.datiItems[0].item3++;	
-				    this.clickCounter -= 10000;
 				}
 			},
 			async updateItems() {
@@ -122,7 +132,7 @@
 				    <h5 class="card-title">Virus 1</h5>
 				    <p class="card-text">Generates 1 zombie per second</p>
 					<button class="nav-item button is-primary" v-on:click="incrementItem1()">
-						Research	
+						{{ item1Price() }}	
 					</button>
 				</div>
 			    </div>
@@ -131,7 +141,7 @@
 				    <h5 class="card-title">Virus 2</h5>
 				    <p class="card-text">Virus 2</p>
 					<button class="nav-item button is-primary" v-on:click="incrementItem2()">
-						Research	
+						{{ item2Price() }}	
 					</button>
 				</div>
 			    </div>
@@ -140,7 +150,7 @@
 				    <h5 class="card-title">Virus 3</h5>
 				    <p class="card-text">Virus 3</p>
 					<button class="nav-item button is-primary" v-on:click="incrementItem3()">
-						Research
+						{{ item3Price() }}	
 					</button>
 				</div>
 			    </div>
