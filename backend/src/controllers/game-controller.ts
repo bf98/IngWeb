@@ -63,6 +63,18 @@ export const setUser_AddFriend = async (req: Request, res: Response) => {
 	}
 }
 
+export const setUser_RemoveFriend = async (req: Request, res: Response) => {
+
+	// TODO
+	const user = getUser(req, res);
+	const { friend_id } = req.params;
+
+	if (user) {
+
+	  const [result] = await connection.execute("delete from friends where user_id=? and friend_id=?", [ user.id, friend_id ]);
+	}
+}
+
 export const getUser_ScoreNum = async (_req: Request, res: Response) => {
 
 	const user = getUser(_req, res);

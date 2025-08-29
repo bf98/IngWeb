@@ -10,7 +10,7 @@
 			    datiUser: [] as User[],
 			    datiProfile: [] as User[],
 			    datiAchievements: [] as AchievementsList[],
-				datiFriends: [] as User[],
+			    datiFriends: [] as User[],
 			}
 		},
 		props: {
@@ -50,6 +50,13 @@
 
 			    }
 			},
+			removeFriend() {
+			   if (this.datiUser) { 
+					axios.put(`/api/game/remove_friend/${this.userId}`);
+					this.$router.push("/leaderboard");
+
+			    }
+			},
 		},
 		mounted() {
 			this.getUser();
@@ -72,6 +79,9 @@
 			<p>Click Number: {{ datiProfile[0].click_num }}</p>
 			<button class="nav-item button is-primary" v-if="datiUser && datiUser.id != userId && !checkIdCollision()" v-on:click="addFriend()">
 			    Add Friend
+			</button>
+			<button class="nav-item button is-primary" v-if="datiUser && datiUser.id != userId && checkIdCollision()" v-on:click="removeFriend()">
+			    Remove Friend
 			</button>
 		    </div>
 		</div>
