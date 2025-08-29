@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Ago 27, 2025 alle 20:17
+-- Creato il: Ago 29, 2025 alle 09:03
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `achievements` (
 --
 
 INSERT INTO `achievements` (`user_id`, `achievement_1`, `achievement_2`, `achievement_3`) VALUES
-(14, 1, 0, 0),
+(14, 0, 0, 0),
 (15, 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -79,7 +79,7 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`user_id`, `item1`, `item2`, `item3`) VALUES
-(14, 0, 0, 0);
+(14, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -91,16 +91,17 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(10) NOT NULL,
   `password` longtext DEFAULT NULL,
-  `click_num` bigint(20) DEFAULT 0
+  `click_num` bigint(20) DEFAULT 0,
+  `score` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `click_num`) VALUES
-(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 0),
-(15, 'user2', '$2b$10$40UTkCcqf395KZSVhJVfsOZoqUi1WaU33O6GdouJ4WtxcO12G8nj6', 0);
+INSERT INTO `users` (`id`, `name`, `password`, `click_num`, `score`) VALUES
+(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 57, 0),
+(15, 'user2', '$2b$10$40UTkCcqf395KZSVhJVfsOZoqUi1WaU33O6GdouJ4WtxcO12G8nj6', 0, 0);
 
 --
 -- Indici per le tabelle scaricate
