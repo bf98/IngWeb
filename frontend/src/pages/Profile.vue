@@ -10,6 +10,7 @@
 			    datiUser: [] as User[],
 			    datiProfile: [] as User[],
 			    datiAchievements: [] as AchievementsList[],
+				datiFriends: [] as User[],
 			}
 		},
 		props: {
@@ -23,12 +24,12 @@
 			{
 				axios.get("/api/auth/profile").then(response => this.datiUser = response.data);
 			},
-			checkProfile() { // forse da rimuovere
-			    if (this.datiUser) {
-				if (this.datiUser.id == this.userId) {
-				    this.$router.push("/account");
+			checkIdCollision() { // forse da rimuovere
+				for (let i = 0; i < this.datiFriends.length; i++) {
+					if (this.datiFriends[i].id == this.userId) {
+						return true;
+					}
 				}
-			    }
 			},
 			getProfile() 
 			{
@@ -38,9 +39,15 @@
 			    
 				axios.get(`/api/achievements/${this.userId}`).then(response => this.datiAchievements = response.data);
 			},
+			getFriends()
+			{
+				axios.get("/api/get_friends").then(response => this.datiFriends = response.data);
+			},
 			addFriend() {
 			   if (this.datiUser) { 
-				axios.put(`/api/game/add_friend/${this.userId}`);
+					axios.put(`/api/game/add_friend/${this.userId}`);
+					this.$router.push("/leaderboard");
+
 			    }
 			},
 		},
@@ -48,7 +55,7 @@
 			this.getUser();
 			this.getProfile();
 			this.getAchievements();
-			this.checkProfile();
+			this.getFriends();
 		}
 
 	})
@@ -63,7 +70,7 @@
 		    <div class="container section p-4">
 			<p>Username: {{ datiProfile[0].name }}</p>
 			<p>Click Number: {{ datiProfile[0].click_num }}</p>
-			<button class="nav-item button is-primary" v-if="datiUser && datiUser.id != userId" v-on:click="addFriend()">
+			<button class="nav-item button is-primary" v-if="datiUser && datiUser.id != userId && !checkIdCollision()" v-on:click="addFriend()">
 			    Add Friend
 			</button>
 		    </div>

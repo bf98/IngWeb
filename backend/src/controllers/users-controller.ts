@@ -72,3 +72,11 @@ export async function getAchievementsById(req: Request, res: Response) {
 
     res.json(result);
 }
+
+export async function getFriendsById(req: Request, res: Response) {
+
+    const { id } = req.params;
+    const [result] = await connection.query("select * from friends where user_id=?", [id]);
+
+    res.json(result);
+}
