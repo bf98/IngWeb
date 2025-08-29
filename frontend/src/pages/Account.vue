@@ -79,6 +79,9 @@
 			<p>Friend List</p>
 			<div v-if="datiFriends[0]">
 			    <!-- DA IMPLEMENTARE --> 
+				<p v-for="friend in datiFriends">
+					<a :href="`profile/${friend.id}`">{{ friend.name }}</a>
+				</p>
 			</div>
 			<div v-else>
 			    <p>The friend list is empty.</p>
