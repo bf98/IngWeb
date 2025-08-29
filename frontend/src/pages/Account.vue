@@ -75,7 +75,7 @@
 	    </div>
 	    <div class="row align-items-center">
 		<div class="col">
-		    <div class="container-flex section mx-auto m-4 p-4" style="max-width:50%;text-align:center">
+		    <div class="container-flex section mx-auto m-4 p-4" style="position:relative;max-width:50%;max-height:150px;text-align:center;overflow-y:scroll">
 			<p>Friend List</p>
 			<div v-if="datiFriends[0]">
 			    <!-- DA IMPLEMENTARE --> 
