@@ -33,13 +33,19 @@
 
 			},
 			item1Price() {
-				return (50 + (50 * this.datiItems[0].item1));
+				if (this.datiUser[0]) {
+				  	return (50 + (50 * this.datiItems[0].item1));
+				}
 			},
 			item2Price() {
-				return (500 + (500 * this.datiItems[0].item2));
+				if (this.datiUser[0]) {
+					return (500 + (500 * this.datiItems[0].item2));
+				}
 			},
 			item3Price() {
-				return (1500 + (1500 * this.datiItems[0].item3));
+				if (this.datiUser[0]) {
+					return (1500 + (1500 * this.datiItems[0].item3));
+				}
 			},
 			async incrementClicks() {
 
@@ -56,7 +62,7 @@
 
 			},
 			async updateClicks() {
-
+			
 				axios.put("/api/game/set_clicks", {
 					clickNum: this.clickCounter,
 				});
@@ -96,22 +102,37 @@
 				axios.get("/api/game/get_clicks").then(response => this.clickCounter = response.data[0].click_num);
 
 			},
+			getScore() {
+
+				axios.get("/api/game/get_score").then(response => this.gameScore = response.data[0].score);
+
+			},
+			updateScore() {
+
+				axios.put("/api/game/set_score", {
+					score: this.gameScore,
+				});
+			},
 		},
 		mounted() {
 			this.getUser();
 			this.getItems();
 			this.getClicks();
+			//this.getScore();
 			setInterval(this.autoIncrementClicks, 1000);
 			window.addEventListener('beforeunload', this.updateClicks);
 			window.addEventListener('beforeunload', this.updateItems);
+			//window.addEventListener('beforeunload', this.updateScore);
 		},
 		beforeRouteLeave(to, from) {
 			this.updateClicks();
 			this.updateItems();
+			//this.updateScore();
 		},
 		beforeDestroy() {
 			window.removeEventListener('beforeunload', this.updateClicks);
 			window.removeEventListener('beforeunload', this.updateItems);
+			//window.removeEventListener('beforeunload', this.updateScore);
 		},
 	})
 
@@ -130,7 +151,7 @@
 			    <div class="col">
 				<div class="card-body">
 				    <h5 class="card-title">Virus 1</h5>
-				    <p class="card-text">Generates 1 zombie per second</p>
+				    <p class="card-text">Generates (1 * n) zombies per second, where n is virus level.</p>
 					<button class="nav-item button is-primary" v-on:click="incrementItem1()">
 						{{ item1Price() }}	
 					</button>
@@ -139,7 +160,7 @@
 			    <div class="col">
 				<div class="card-body">
 				    <h5 class="card-title">Virus 2</h5>
-				    <p class="card-text">Virus 2</p>
+				    <p class="card-text">Generates (100 * n) zombies per second, where n is virus level.</p>
 					<button class="nav-item button is-primary" v-on:click="incrementItem2()">
 						{{ item2Price() }}	
 					</button>
@@ -148,7 +169,7 @@
 			    <div class="col">
 				<div class="card-body">
 				    <h5 class="card-title">Virus 3</h5>
-				    <p class="card-text">Virus 3</p>
+				    <p class="card-text">Generates (500 * n) zombies per second, where n is virus level.</p>
 					<button class="nav-item button is-primary" v-on:click="incrementItem3()">
 						{{ item3Price() }}	
 					</button>
@@ -164,6 +185,7 @@
 			    <p>Virus1 Level: {{ datiItems[0].item1 }}</p>
 			    <p>Virus2 Level: {{ datiItems[0].item2 }}</p>
 			    <p>Virus3 Level: {{ datiItems[0].item3 }}</p>
+			    <p>Total Score: {{ gameScore }}</p>
 			</div>
 			<div class="row">
 			    <button class="nav-item button is-primary" v-on:click="incrementClicks()">

@@ -44,7 +44,8 @@
 <template>
     <div v-if="datiUser[0]">
 	<div class="container-fluid fill d-flex justify-content-center w-100">
-	    <div class="row align-items-center">
+	    <div class="row align-items-center" style="position:absolute; padding-top:10%; padding-bottom:auto%; padding-left:15%; padding-right:15%; height:100px; justify-content:center">
+		<div class="container-fluid justify-content-center row align-items-center">
 		<div class="col">
 		    <div class="container-flex section p-4">
 			<p>Your Username: {{ datiUser[0].name }}</p>
@@ -74,7 +75,7 @@
 	    </div>
 	    <div class="row align-items-center">
 		<div class="col">
-		    <div class="container-flex section p-4">
+		    <div class="container-flex section mx-auto m-4 p-4" style="max-width:50%;text-align:center">
 			<p>Friend List</p>
 			<div v-if="datiFriends[0]">
 			    <!-- DA IMPLEMENTARE --> 
@@ -86,7 +87,8 @@
 		</div>
 	    </div>
 	</div>
-    </div>
+	</div>
+	</div>
     <div v-else>
 	<div class="container-fluid fill d-flex justify-content-center w-100">
 	    <div class="row align-items-center">
