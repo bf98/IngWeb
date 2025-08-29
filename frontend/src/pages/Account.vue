@@ -70,6 +70,12 @@
 			<div v-if="datiAchievements[0].achievement_3">
 			    <img src="../assets/img/back_gold.png">
 			</div>
+
+			<!-- DA FARE -->
+			<div class="progress-bar">
+			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
+			</div>
+			<p class="text-center"> Achievement bar </p>
 		    </div>
 		</div>
 	    </div>
@@ -105,3 +111,18 @@
     </div>
 </template>
 
+<style>
+    .progress-bar {
+	height: 20px;
+	border-radius: 10px;
+	position: relative;
+    }
+
+    .progress {
+	height: 100%;
+	border-radius: 10px;
+	background: darkgreen;
+	width: 0%;
+	position: relative;
+    }
+</style>
