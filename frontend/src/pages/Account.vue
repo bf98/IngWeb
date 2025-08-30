@@ -75,7 +75,15 @@
 			<div class="progress-bar">
 			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
 			</div>
-			<p class="text-center"> Achievement bar </p>
+			<p class="text-center"> achievement bar </p>
+			<div class="progress-bar">
+			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
+			</div>
+			<p class="text-center"> achievement bar </p>
+			<div class="progress-bar">
+			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
+			</div>
+			<p class="text-center"> achievement bar </p>
 		    </div>
 		</div>
 	    </div>
