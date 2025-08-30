@@ -36,6 +36,9 @@
 				// torna alla home
 				this.$router.push("/login");
 			},
+			goto_ControlPanel() {
+				this.$router.push("/controlpanel");
+			},
 			calculateBar1Width() {
 				const widthValue = this.datiItems[0].item1 / 100;
 				if (widthValue >= 100) {
@@ -85,6 +88,11 @@
 			<p>Total Score: {{ datiUser[0].score }}</p>
 			<button class="nav-item button is-primary" @click="logout">
 			    Log-Out
+			</button>
+		    </div>
+		    <div v-if="datiUser[0].isAdmin" class="container-flex section p-4">
+			<button class="nav-item button is-primary" @click="goto_ControlPanel">
+			    Enter ControlPanel 
 			</button>
 		    </div>
 		</div>

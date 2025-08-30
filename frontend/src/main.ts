@@ -7,6 +7,7 @@ import Login from "./pages/Login.vue"
 import Register from "./pages/Register.vue"
 import Leaderboard from "./pages/Leaderboard.vue"
 import Profile from "./pages/Profile.vue"
+import ControlPanel from "./pages/ControlPanel.vue"
 import "./style.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -19,6 +20,7 @@ const router: Router = createRouter({
 	{ path: "/login", component: Login},
 	{ path: "/register", component: Register },
 	{ path: "/profile/:userId", component: Profile, props: true },
+	{ path: "/controlpanel", component: ControlPanel },
     ]
 })
 
