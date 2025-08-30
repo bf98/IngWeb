@@ -73,6 +73,7 @@
 				if (this.datiUser[0] && this.clickCounter >= this.item1Price()) {
 				    this.clickCounter -= this.item1Price();
 				    this.datiItems[0].item1++;	
+				    this.gameScore += 10;
 				}
 			},
 			async incrementItem2() {
@@ -80,6 +81,7 @@
 				if (this.datiUser[0] && this.clickCounter >= this.item2Price()) {
 				    this.clickCounter -= this.item2Price();
 				    this.datiItems[0].item2++;	
+				    this.gameScore += 50;
 				}
 			},
 			async incrementItem3() {
@@ -87,6 +89,7 @@
 				if (this.datiUser[0] && this.clickCounter >= this.item3Price()) {
 				    this.clickCounter -= this.item3Price();
 				    this.datiItems[0].item3++;	
+				    this.gameScore += 100;
 				}
 			},
 			async updateItems() {
@@ -107,7 +110,11 @@
 				axios.get("/api/game/get_score").then(response => this.gameScore = response.data[0].score);
 
 			},
-			updateScore() {
+			async showScore() {
+			    if (this.datiUser[0]) {
+			    }
+			},
+			async updateScore() {
 
 				axios.put("/api/game/set_score", {
 					score: this.gameScore,
@@ -118,21 +125,21 @@
 			this.getUser();
 			this.getItems();
 			this.getClicks();
-			//this.getScore();
+			this.getScore();
 			setInterval(this.autoIncrementClicks, 1000);
 			window.addEventListener('beforeunload', this.updateClicks);
 			window.addEventListener('beforeunload', this.updateItems);
-			//window.addEventListener('beforeunload', this.updateScore);
+			window.addEventListener('beforeunload', this.updateScore);
 		},
 		beforeRouteLeave(to, from) {
 			this.updateClicks();
 			this.updateItems();
-			//this.updateScore();
+			this.updateScore();
 		},
 		beforeDestroy() {
 			window.removeEventListener('beforeunload', this.updateClicks);
 			window.removeEventListener('beforeunload', this.updateItems);
-			//window.removeEventListener('beforeunload', this.updateScore);
+			window.removeEventListener('beforeunload', this.updateScore);
 		},
 	})
 
