@@ -10,6 +10,7 @@
 				datiUser: [] as User[],
 				datiAchievements: [] as AchievementsList[], 
 				datiFriends: [] as User[],
+				datiItems: [] as ItemsList[],
 			}
 		},
 		methods: {
@@ -25,17 +26,31 @@
 			{
 				axios.get("/api/get_friends").then(response => this.datiFriends = response.data);
 			},
+			getItems()
+			{
+				axios.get("/api/get_items").then(response => this.datiItems = response.data);
+			},
 			logout() {
 				axios.post("/api/auth/logout/");
 
 				// torna alla home
 				this.$router.push("/login");
-			}
+			},
+			calculateBar1Width() {
+				return (this.datiItems[0].item1 / 100) * 100 + '%';
+			},
+			calculateBar2Width() {
+				return (this.datiItems[0].item2 / 100) * 100 + '%';
+			},
+			calculateBar3Width() {
+				return (this.datiItems[0].item3 / 100) * 100 + '%';
+			},
 		},
 		mounted() {
 			this.getUser();
 			this.getAchievements();
 			this.getFriends();
+			this.getItems();
 		}
 	})
 
@@ -49,7 +64,7 @@
 		<div class="col">
 		    <div class="container-flex section p-4">
 			<p>Your Username: {{ datiUser[0].name }}</p>
-			<p>Your Clicks: {{ datiUser[0].click_num }}</p>
+			<p>Total Score: {{ datiUser[0].score }}</p>
 			<button class="nav-item button is-primary" @click="logout">
 			    Log-Out
 			</button>
@@ -58,6 +73,9 @@
 		<div class="col">
 		    <div class="container-flex section p-4">
 			<p>Achievements</p>
+
+			<!-- PROBABILMENTE DA TOGLIERE -->
+			<!--
 			<div v-if="datiAchievements[0].achievement_1 == 0 && datiAchievements[0].achievement_2 == 0 && datiAchievements[0].achievement_3 == 0">
 			    You have no achievements.
 			</div>
@@ -70,20 +88,21 @@
 			<div v-if="datiAchievements[0].achievement_3">
 			    <img src="../assets/img/back_gold.png">
 			</div>
+			-->
 
 			<!-- DA FARE -->
+			<p class="text-center"> Upgrade Virus 1: {{ this.datiItems[0].item1 }}/100 </p>
 			<div class="progress-bar">
-			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
+			    <div class="progress" :style="{ width: calculateBar1Width() }"></div>
 			</div>
-			<p class="text-center"> achievement bar </p>
+			<p class="text-center"> Upgrade Virus 2: {{ this.datiItems[0].item2 }}/100 </p>
 			<div class="progress-bar">
-			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
+			    <div class="progress" :style="{ width: calculateBar2Width() }"></div>
 			</div>
-			<p class="text-center"> achievement bar </p>
+			<p class="text-center"> Upgrade Virus 3: {{ this.datiItems[0].item3 }}/100 </p>
 			<div class="progress-bar">
-			    <div class="progress" style="width: 70%; background: darkgreen;"></div>
+			    <div class="progress" :style="{ width: calculateBar3Width() }"></div>
 			</div>
-			<p class="text-center"> achievement bar </p>
 		    </div>
 		</div>
 	    </div>

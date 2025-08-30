@@ -31,12 +31,17 @@
     color: gray;
 }
 
-.nav-item > a:active {
+.nav-item > a:focus {
     color: darkgreen;
 }
 
-.nav-item > a:hover, a:visited {
-    color: green;
+.nav-item > a:visited {
+    color:green;
+}
+
+.nav-item > a:hover {
+    text-decoration: none;
+    color: lightgreen;
 }
 
 .view-root {
