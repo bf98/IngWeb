@@ -37,13 +37,31 @@
 				this.$router.push("/login");
 			},
 			calculateBar1Width() {
-				return (this.datiItems[0].item1 / 100) * 100 + '%';
+				const widthValue = this.datiItems[0].item1 / 100;
+				if (widthValue >= 100) {
+				    return 100 + '%';
+				}
+				else {
+				    return widthValue * 100 + '%';
+				}
 			},
 			calculateBar2Width() {
-				return (this.datiItems[0].item2 / 100) * 100 + '%';
+				const widthValue = this.datiItems[0].item2 / 100;
+				if (widthValue >= 100) {
+				    return 100 + '%';
+				}
+				else {
+				    return widthValue * 100 + '%';
+				}
 			},
 			calculateBar3Width() {
-				return (this.datiItems[0].item3 / 100) * 100 + '%';
+				const widthValue = this.datiItems[0].item3 / 100;
+				if (widthValue >= 100) {
+				    return 100 + '%';
+				}
+				else {
+				    return widthValue * 100 + '%';
+				}
 			},
 		},
 		mounted() {
