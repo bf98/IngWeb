@@ -10,6 +10,7 @@
 			    datiUser: [] as User[],
 			    datiProfile: [] as User[],
 			    datiAchievements: [] as AchievementsList[],
+				datiItems: [] as ItemsList[],
 			    datiFriends: [] as User[],
 			}
 		},
@@ -57,10 +58,41 @@
 
 			    }
 			},
+			getItems() {
+				axios.get(`/api/items/${this.userId}`).then(response => this.datiItems = response.data);
+			},
+			calculateBar1Width() {
+				const widthValue = this.datiItems[0].item1 / 100;
+				if (widthValue >= 100) {
+				    return 100 + '%';
+				}
+				else {
+				    return widthValue * 100 + '%';
+				}
+			},
+			calculateBar2Width() {
+				const widthValue = this.datiItems[0].item2 / 100;
+				if (widthValue >= 100) {
+				    return 100 + '%';
+				}
+				else {
+				    return widthValue * 100 + '%';
+				}
+			},
+			calculateBar3Width() {
+				const widthValue = this.datiItems[0].item3 / 100;
+				if (widthValue >= 100) {
+				    return 100 + '%';
+				}
+				else {
+				    return widthValue * 100 + '%';
+				}
+			},
 		},
 		mounted() {
 			this.getUser();
 			this.getProfile();
+			this.getItems();
 			this.getAchievements();
 			this.getFriends();
 		}
@@ -76,7 +108,7 @@
 		<div class="col">
 		    <div class="container section p-4">
 			<p>Username: {{ datiProfile[0].name }}</p>
-			<p>Click Number: {{ datiProfile[0].click_num }}</p>
+			<p>Total Score: {{ datiProfile[0].score }}</p>
 			<button class="nav-item button is-primary" v-if="datiUser && datiUser.id != userId && !checkIdCollision()" v-on:click="addFriend()">
 			    Add Friend
 			</button>
@@ -85,20 +117,22 @@
 			</button>
 		    </div>
 		</div>
-		<div class="col">
+		<div class="col-7">
 		    <div class="container-flex section p-4">
 			<p>Achievements</p>
-			<div v-if="datiAchievements[0].achievement_1 == 0 && datiAchievements[0].achievement_2 == 0 && datiAchievements[0].achievement_3 == 0">
-			    No achievements unlocked.
+
+			<!-- DA FARE -->
+			<p class="text-center"> Upgrade Virus 1: {{ this.datiItems[0].item1 }}/100 </p>
+			<div class="progress-bar">
+			    <div class="progress" :style="{ width: calculateBar1Width() }"></div>
 			</div>
-			<div v-if="datiAchievements[0].achievement_1">
-			    <img src="../assets/img/back_bronze.png">
+			<p class="text-center"> Upgrade Virus 2: {{ this.datiItems[0].item2 }}/100 </p>
+			<div class="progress-bar">
+			    <div class="progress" :style="{ width: calculateBar2Width() }"></div>
 			</div>
-			<div v-if="datiAchievements[0].achievement_2">
-			    <img src="../assets/img/back_silver.png">
-			</div>
-			<div v-if="datiAchievements[0].achievement_3">
-			    <img src="../assets/img/back_gold.png">
+			<p class="text-center"> Upgrade Virus 3: {{ this.datiItems[0].item3 }}/100 </p>
+			<div class="progress-bar">
+			    <div class="progress" :style="{ width: calculateBar3Width() }"></div>
 			</div>
 		    </div>
 		</div>
@@ -106,3 +140,19 @@
 	</div>
     </div>
 </template>
+
+<style>
+    .progress-bar {
+	height: 20px;
+	border-radius: 10px;
+	position: relative;
+    }
+
+    .progress {
+	height: 100%;
+	border-radius: 10px;
+	background: darkgreen;
+	width: 0%;
+	position: relative;
+    }
+</style>

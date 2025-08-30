@@ -80,3 +80,11 @@ export async function getFriendsById(req: Request, res: Response) {
 
     res.json(result);
 }
+
+export async function getItemsById(req: Request, res: Response) {
+
+    const { id } = req.params;
+    const [result] = await connection.query("select * from items where user_id=?", [id]);
+
+    res.json(result);
+}

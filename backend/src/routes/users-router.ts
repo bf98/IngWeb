@@ -11,5 +11,6 @@ router.get("/api/get_friends", usersController.currentUser_getFriends)
 router.get("/api/users/:id", usersController.getUserById);
 router.get("/api/achievements/:id", usersController.getAchievementsById);
 router.get("/api/friends/:id", usersController.getFriendsById);
+router.get("/api/items/:id", usersController.getItemsById);
 
 export default router
