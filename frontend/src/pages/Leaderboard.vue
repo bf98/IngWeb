@@ -27,32 +27,21 @@
 
 <template>
     <div class="container-fluid fill d-flex justify-content-center">
-	<div class="row align-items-center w-50">
+	<div class="row align-items-center w-50" style="min-width:300px;">
 	    <div class="col">
-		<div class="container-flex section p-4">
-		    <table class="table table-dark table-striped">
+		<h1 style="text-align:center; color:white; font-weight: bold; padding-bottom:2vh">High Score</h1>
+		<div class="container-flex section p-4" style="min-width:300px;">
+		    <table class="table table-dark table-striped" style="table-layout:fixed;">
 			<thead class="thead-dark">
-			    <tr scope="col">Position</tr>
-			    <tr scope="col">User</tr>
-			    <tr scope="col">Score</tr>
+				<tr>
+			    <th scope="col">Position</th>
+			    <th scope="col">User</th>
+			    <th scope="col">Score</th>
+				</tr>
 			</thead>	
 			<tbody>
 			    <tr v-for="(user, index) in usersTop">
 				<th scope="row">{{ index + 1 }}</th>
-				<td><a :href="`profile/${ user.id }`">{{ user.name }}</a></td>
-				<td>{{ user.score }}</td>
-			    </tr>
-			</tbody>
-		    </table>
-		    <table class="table table-dark table-striped">
-			<thead>
-			    <tr scope="col">Position</tr>
-			    <tr scope="col">User</tr>
-			    <tr scope="col">Score</tr>
-			</thead>	
-			<tbody>
-			    <tr v-for="(user, index) in usersOthers">
-				<th scope="row">{{ index + 4 }}</th>
 				<td><a :href="`profile/${ user.id }`">{{ user.name }}</a></td>
 				<td>{{ user.score }}</td>
 			    </tr>

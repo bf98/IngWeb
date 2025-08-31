@@ -19,7 +19,7 @@
 
 .navbar {
     background-color: #1c1c1c;
-    height: 10vh;
+    min-height: 10vh;
 }
 
 .navbar-brand > h3 {

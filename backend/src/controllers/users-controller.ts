@@ -8,6 +8,15 @@ export async function allUsers(req: Request, res: Response) {
     res.json(users);
 }
 
+// DA FARE
+export async function deleteUserById(req: Request, res: Response) {
+
+    const { id } = req.params;
+    const [result] = await connection.query("select * from users where id=?", [id]);
+
+    res.json(result);
+}
+
 export async function currentUser_getData(req: Request, res: Response) {
 
     const user = getUser(req, res);	

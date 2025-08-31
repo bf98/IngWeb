@@ -207,9 +207,9 @@
     <div v-else>
 	<div class="container fill d-flex justify-content-center">
 	    <div class="row align-items-center">
-		<div class="col-md-8">
+		<div class="col-md-8 w-100">
 		    <div class="container-flex section p-4">
-			<p>You have to login first</p>
+			<p class="text-center">In order to play, you have to log-in.</p>
 		    </div>
 		</div>
 	    </div>
