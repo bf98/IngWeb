@@ -7,15 +7,12 @@
 	export default defineComponent({
 		data() {
 			return {
-				usersTop: [] as User[],
-				usersOthers: [] as User[],
-				rowNum: 1,
+				usersLeaderboard: [] as User[],
 			}
 		},
 		methods: {
 			getLeaderboard() {
-				axios.get("/api/leaderboard_top3/").then(response => this.usersTop = response.data) 
-				axios.get("/api/leaderboard_others/").then(response => this.usersOthers = response.data) 
+				axios.get("/api/leaderboard").then(response => this.usersLeaderboard = response.data) 
 			}
 		},
 		mounted() {
@@ -40,7 +37,7 @@
 				</tr>
 			</thead>	
 			<tbody>
-			    <tr v-for="(user, index) in usersTop">
+			    <tr v-for="(user, index) in usersLeaderboard">
 				<th scope="row">{{ index + 1 }}</th>
 				<td><a :href="`profile/${ user.id }`">{{ user.name }}</a></td>
 				<td>{{ user.score }}</td>

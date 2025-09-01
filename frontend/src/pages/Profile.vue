@@ -2,15 +2,14 @@
 
     import { defineComponent, defineProps } from "vue"
 	import axios from "axios"
-	import { User, AchievementsList } from "../types"
+	import { User } from "../types"
 
 	export default defineComponent({
 		data() {
 			return {
 			    datiUser: [] as User[],
 			    datiProfile: [] as User[],
-			    datiAchievements: [] as AchievementsList[],
-				datiItems: [] as ItemsList[],
+			    datiItems: [] as ItemsList[],
 			    datiFriends: [] as User[],
 			}
 		},
@@ -35,10 +34,6 @@
 			getProfile() 
 			{
 				axios.get(`/api/users/${this.userId}`).then(response => this.datiProfile = response.data);
-			},
-			getAchievements() {
-			    
-				axios.get(`/api/achievements/${this.userId}`).then(response => this.datiAchievements = response.data);
 			},
 			getFriends()
 			{
@@ -93,9 +88,8 @@
 			this.getUser();
 			this.getProfile();
 			this.getItems();
-			this.getAchievements();
 			this.getFriends();
-		}
+		},
 
 	})
 

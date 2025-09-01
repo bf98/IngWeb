@@ -12,10 +12,27 @@ export async function allUsers(req: Request, res: Response) {
 export async function deleteUserById(req: Request, res: Response) {
 
     const { id } = req.params;
-    const [result] = await connection.query("select * from users where id=?", [id]);
+    const [result] = await connection.query("delete from users where id=?", [id]);
 
     res.json(result);
 }
+
+export async function deleteItemsById(req: Request, res: Response) {
+
+    const { id } = req.params;
+    const [result] = await connection.query("delete from items where user_id=?", [id]);
+
+    res.json(result);
+}
+
+export async function deleteFriendListById(req: Request, res: Response) {
+
+    const { id } = req.params;
+    const [result] = await connection.query("delete from friends where user_id=? or friend_id=?", [id, id]);
+
+    res.json(result);
+}
+
 
 export async function currentUser_getData(req: Request, res: Response) {
 
@@ -23,16 +40,6 @@ export async function currentUser_getData(req: Request, res: Response) {
 
     if (user) {
 	const [result] = await connection.query("select * from users where id=?", [ user.id ]);
-	res.json(result);
-    }
-}
-
-export async function currentUser_getAchievements(req: Request, res: Response) {
-
-    const user = getUser(req, res);
-
-    if (user) {
-	const [result] = await connection.query("select * from achievements where user_id=?", [ user.id ]);
 	res.json(result);
     }
 }
@@ -70,14 +77,6 @@ export async function getUserById(req: Request, res: Response) {
 
     const { id } = req.params;
     const [result] = await connection.query("select * from users where id=?", [id]);
-
-    res.json(result);
-}
-
-export async function getAchievementsById(req: Request, res: Response) {
-
-    const { id } = req.params;
-    const [result] = await connection.query("select * from achievements where user_id=?", [id]);
 
     res.json(result);
 }

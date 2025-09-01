@@ -2,14 +2,13 @@
 
     import { defineComponent } from "vue"
 	import axios from "axios"
-	import { User, ItemsList, AchivementsList } from "../types"
+	import { User, ItemsList } from "../types"
 
 	export default defineComponent({
 		data() {
 			return {
 
 				datiUser: [] as User[],
-				datiAchievements: [] as AchievementsList[],
 				datiItems: [] as ItemsList[],
 				clickCounter: 0,	
 				gameScore: 0,
@@ -20,11 +19,6 @@
 			getUser() {
 
 				axios.get("/api/auth/profile").then(response => this.datiUser[0] = response.data)
-
-			},
-			getAchievements() {
-
-				axios.get("/api/get_achievements").then(response => this.datiAchievements = response.data)
 
 			},
 			getItems() {

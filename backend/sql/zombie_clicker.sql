@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 31, 2025 at 05:35 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Creato il: Set 01, 2025 alle 22:53
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `achievements`
+-- Struttura della tabella `achievements`
 --
 
 CREATE TABLE `achievements` (
@@ -35,17 +35,21 @@ CREATE TABLE `achievements` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `achievements`
+-- Dump dei dati per la tabella `achievements`
 --
 
 INSERT INTO `achievements` (`user_id`, `achievement_1`, `achievement_2`, `achievement_3`) VALUES
-(20, 0, 0, 0),
-(21, 0, 0, 0);
+(14, 0, 0, 0),
+(16, 0, 0, 0),
+(17, 0, 0, 0),
+(18, 0, 0, 0),
+(19, 0, 0, 0),
+(20, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `friends`
+-- Struttura della tabella `friends`
 --
 
 CREATE TABLE `friends` (
@@ -57,7 +61,7 @@ CREATE TABLE `friends` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Struttura della tabella `items`
 --
 
 CREATE TABLE `items` (
@@ -68,17 +72,16 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `items`
+-- Dump dei dati per la tabella `items`
 --
 
 INSERT INTO `items` (`user_id`, `item1`, `item2`, `item3`) VALUES
-(20, 4, 0, 0),
-(21, 1, 0, 0);
+(14, 50, 22, 72);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struttura della tabella `users`
 --
 
 CREATE TABLE `users` (
@@ -91,56 +94,55 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dump dei dati per la tabella `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `click_num`, `score`, `isAdmin`) VALUES
-(20, 'foo', '$2b$10$1h5aB6v1LxcPipkJSgOYaes9jaMwQ/6Q.CqQy/Q2daQ6vvZlkBkRi', 458, 30, 1),
-(21, 'user2', '$2b$10$mB3UU8qNoB.95odWwJ/wAepgIZg/MdDH8NOIqg9btdiuBhiWqleeS', 7, 10, 0);
+(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 589144, 8800, 1);
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `achievements`
+-- Indici per le tabelle `achievements`
 --
 ALTER TABLE `achievements`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `friends`
+-- Indici per le tabelle `friends`
 --
 ALTER TABLE `friends`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `items`
+-- Indici per le tabelle `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indici per le tabelle `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `friends`
+-- AUTO_INCREMENT per la tabella `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
