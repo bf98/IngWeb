@@ -34,8 +34,6 @@ export const register = async (req: Request, res: Response) => {
 	  [username])
 	const newUser = (results as User[])[0]
 	
-	await connection.execute("insert into achievements (user_id) values (?)",
-							[ newUser.id, ])
 	await connection.execute("insert into items (user_id) values (?)",
 							[ newUser.id, ])
 
