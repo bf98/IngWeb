@@ -41,7 +41,7 @@
 			},
 			calculateBar1Width() {
 				const widthValue = this.datiItems[0].item1 / 100;
-				if (widthValue >= 100) {
+				if (widthValue >= 1.0) {
 				    return 100 + '%';
 				}
 				else {
@@ -50,7 +50,7 @@
 			},
 			calculateBar2Width() {
 				const widthValue = this.datiItems[0].item2 / 100;
-				if (widthValue >= 100) {
+				if (widthValue >= 1.0) {
 				    return 100 + '%';
 				}
 				else {
@@ -59,12 +59,36 @@
 			},
 			calculateBar3Width() {
 				const widthValue = this.datiItems[0].item3 / 100;
-				if (widthValue >= 100) {
+				if (widthValue >= 1.0) {
 				    return 100 + '%';
 				}
 				else {
 				    return widthValue * 100 + '%';
 				}
+			},
+			showItem1Count() {
+			    if (this.datiItems[0].item1 < 100) {
+				return this.datiItems[0].item1;
+			    }
+			    else {
+				return 100;
+			    }
+			},
+			showItem2Count() {
+			    if (this.datiItems[0].item2 < 100) {
+				return this.datiItems[0].item2;
+			    }
+			    else {
+				return 100;
+			    }
+			},
+			showItem3Count() {
+			    if (this.datiItems[0].item3 < 100) {
+				return this.datiItems[0].item3;
+			    }
+			    else {
+				return 100;
+			    }
 			},
 		},
 		mounted() {
@@ -117,15 +141,15 @@
 			-->
 
 			<!-- DA FARE -->
-			<p class="text-center"> Upgrade Virus 1: {{ this.datiItems[0].item1 }}/100 </p>
+			<p class="text-center"> Upgrade Virus 1: {{ showItem1Count() }}/100 </p>
 			<div class="progress-bar">
 			    <div class="progress" :style="{ width: calculateBar1Width() }"></div>
 			</div>
-			<p class="text-center"> Upgrade Virus 2: {{ this.datiItems[0].item2 }}/100 </p>
+			<p class="text-center"> Upgrade Virus 2: {{ showItem2Count() }}/100 </p>
 			<div class="progress-bar">
 			    <div class="progress" :style="{ width: calculateBar2Width() }"></div>
 			</div>
-			<p class="text-center"> Upgrade Virus 3: {{ this.datiItems[0].item3 }}/100 </p>
+			<p class="text-center"> Upgrade Virus 3: {{ showItem3Count() }}/100 </p>
 			<div class="progress-bar">
 			    <div class="progress" :style="{ width: calculateBar3Width() }"></div>
 			</div>

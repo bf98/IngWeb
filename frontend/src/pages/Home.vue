@@ -125,7 +125,7 @@
 			window.addEventListener('beforeunload', this.updateItems);
 			window.addEventListener('beforeunload', this.updateScore);
 		},
-		beforeRouteLeave(to, from) {
+		beforeRouteLeave() {
 			this.updateClicks();
 			this.updateItems();
 			this.updateScore();
