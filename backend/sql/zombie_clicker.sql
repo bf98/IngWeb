@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Set 01, 2025 alle 22:53
+-- Creato il: Set 04, 2025 alle 20:21
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -39,12 +39,7 @@ CREATE TABLE `achievements` (
 --
 
 INSERT INTO `achievements` (`user_id`, `achievement_1`, `achievement_2`, `achievement_3`) VALUES
-(14, 0, 0, 0),
-(16, 0, 0, 0),
-(17, 0, 0, 0),
-(18, 0, 0, 0),
-(19, 0, 0, 0),
-(20, 0, 0, 0);
+(14, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -76,7 +71,7 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`user_id`, `item1`, `item2`, `item3`) VALUES
-(14, 50, 22, 72);
+(14, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -98,7 +93,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `click_num`, `score`, `isAdmin`) VALUES
-(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 589144, 8800, 1);
+(14, 'foo', '$2b$10$QC6pu.bq7a200mDbRaT9gO.P7Z.0eXmnA9K7GFtPUS87bz197oew6', 0, 0, 1);
 
 --
 -- Indici per le tabelle scaricate
@@ -142,7 +137,7 @@ ALTER TABLE `friends`
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -4,7 +4,6 @@ import App from "./App.vue"
 import Home from "./pages/Home.vue"
 import Account from "./pages/Account.vue"
 import Login from "./pages/Login.vue"
-import Register from "./pages/Register.vue"
 import Leaderboard from "./pages/Leaderboard.vue"
 import Profile from "./pages/Profile.vue"
 import ControlPanel from "./pages/ControlPanel.vue"
@@ -18,7 +17,6 @@ const router: Router = createRouter({
 	{ path: "/account", component: Account },
 	{ path: "/leaderboard", component: Leaderboard },
 	{ path: "/login", component: Login},
-	{ path: "/register", component: Register },
 	{ path: "/profile/:userId", component: Profile, props: true },
 	{ path: "/controlpanel", component: ControlPanel },
     ]
